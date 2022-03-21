@@ -3,6 +3,7 @@
 
 // --------- Can Interface
 #include "mcp2515.h"
+#define Default_CAN_CS 10
 
 struct can_frame can_msg_in;
 struct can_frame can_msg_out;
@@ -12,7 +13,7 @@ uint8_t m_can_dlc = 8;
 
 uint32_t master_can_id = 0x001;
 
-MCP2515 mcp2515(10);
+MCP2515* mcp2515;
 
 // --------- EEPROM
 #include <EEPROM.h>
@@ -25,7 +26,7 @@ private:
     void setCANAddress(uint32_t new_can_addr);
 
 public:
-    void setupCAN();
+    void setupCAN(int CS_PIN = Default_CAN_CS);
     bool getCANMessage();
     void sendCANMessage(uint32_t id, uint8_t m_data[8]);
     void invalidCommand();

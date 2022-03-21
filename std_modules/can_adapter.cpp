@@ -3,7 +3,7 @@
 // --------- CAN
 
 /** @brief Setup the CAN transceiver */
-void CAN_ADAPTER::setupCAN() {
+void CAN_ADAPTER::setupCAN(int CS_PIN) {
     // Get address from eeprom
     Serial.println("CAN Transceiver: Loading CAN Address");
     
@@ -21,6 +21,9 @@ void CAN_ADAPTER::setupCAN() {
 
     // Log init
     Serial.println("CAN Transceiver: Init Starting");
+
+    // Init
+    mcp2515 = new MCP2515(CS_PIN);
 
     // Reset and set
     mcp2515.reset();
