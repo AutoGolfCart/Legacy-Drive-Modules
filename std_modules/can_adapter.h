@@ -11,8 +11,6 @@ struct can_frame can_msg_out;
 uint32_t m_can_id = 0x000;
 uint8_t m_can_dlc = 8;
 
-uint32_t master_can_id = 0x001;
-
 MCP2515* mcp2515;
 
 // --------- EEPROM
